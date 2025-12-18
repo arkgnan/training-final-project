@@ -6,10 +6,12 @@
         "buildCommand": "echo building!"
     },
     "deploy": {
-        "preDeployCommand": "echo starting!",
-        "startCommand": ["./out"],
+        "preDeployCommand": [
+            "echo '>>> CONTAINER STARTING...' && ls -la && echo '>>> RUNNING APP:' && ./out 2>&1"
+        ],
+        "startCommand": "./out",
         "healthcheckPath": "/health",
         "healthcheckTimeout": 100,
-        "restartPolicyType": "never"
+        "restartPolicyType": "ON_FAILURE"
     }
 }
