@@ -7,7 +7,7 @@
     },
     "deploy": {
         "preDeployCommand": [
-            "echo '>>> CONTAINER STARTING...' && ls -la && echo '>>> RUNNING APP:' && ./out 2>&1"
+            "echo '>>> CONTAINER STARTING...' && ls -la && echo '>>> RUNNING APP'"
         ],
         "startCommand": "./out",
         "healthcheckPath": "/health",
