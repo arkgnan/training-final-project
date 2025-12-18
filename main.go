@@ -50,7 +50,7 @@ func main() {
 		loadEmbeddedConfig()
 	}
 	// Inisialisasi Redis
-	database.StartRedis()
+	// database.StartRedis()
 	// Initialize DB connection and run migrations
 	database.StartDB()
 	helpers.RegisterCustomValidator()

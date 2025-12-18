@@ -47,8 +47,8 @@ func SetupRouter() *gin.Engine {
 
 	// Photos
 	photoController := controllers.NewPhotoController(database.GetDB(), appLogger)
-	authRouter.POST("/photos", middlewares.RateLimiterConfig(MaxRequests, RateWindow), photoController.Create) // POST /photos
-	authRouter.GET("/photos", photoController.GetAll)                                                          // GET /photos
+	authRouter.POST("/photos", photoController.Create) // POST /photos
+	authRouter.GET("/photos", photoController.GetAll)  // GET /photos
 
 	// Photos (PUT/DELETE require Auth AND Authorization)
 	photoAuthRouter := authRouter.Group("/photos")
@@ -60,10 +60,10 @@ func SetupRouter() *gin.Engine {
 
 	// Comments
 	commentController := controllers.NewCommentController(database.GetDB(), appLogger)
-	authRouter.POST("/comments", middlewares.RateLimiterConfig(MaxRequests, RateWindow), commentController.Create) // POST /comments
-	authRouter.GET("/comments", commentController.GetAll)                                                          // GET /comments
+	authRouter.POST("/comments", commentController.Create) // POST /comments
+	authRouter.GET("/comments", commentController.GetAll)  // GET /comments
 
-	authRouter.POST("/comments/reply/:parentCommentID", middlewares.RateLimiterConfig(MaxRequests, RateWindow), commentController.CreateReply)
+	authRouter.POST("/comments/reply/:parentCommentID", commentController.CreateReply)
 	authRouter.GET("/comments/:parentCommentID/replies", commentController.GetReplies)
 
 	// Comments (PUT/DELETE require Auth AND Authorization)
