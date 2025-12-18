@@ -58,6 +58,8 @@ COPY --from=builder /app/assets ./assets
 
 RUN echo ">>> Cek file hasil copy:" && ls -la /app
 
+RUN chmod +x ./out
+
 # Expose port
 ARG APP_PORT
 EXPOSE ${PORT}
