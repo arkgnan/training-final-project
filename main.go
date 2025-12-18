@@ -42,7 +42,7 @@ func main() {
 	if port == "" {
 		port = os.Getenv("APP_PORT")
 		if port == "" {
-			port = "8080"
+			port = "8000"
 		}
 	}
 	host := os.Getenv("APP_URL")

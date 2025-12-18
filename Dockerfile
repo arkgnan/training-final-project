@@ -57,8 +57,7 @@ COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/assets ./assets
 
 # Expose port
-ARG APP_PORT
-EXPOSE ${PORT}
+EXPOSE 8000
 
 # Command to run
 CMD ["./out"]
