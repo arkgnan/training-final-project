@@ -1,7 +1,6 @@
 package main
 
 import (
-	"embed"
 	"fmt"
 	"log"
 	"mygram-api/database"
@@ -13,8 +12,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-//go:embed .env
-var embeddedFiles embed.FS
 var isReleaseBuild = "no"
 
 func loadEmbeddedConfig() {
