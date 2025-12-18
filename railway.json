@@ -6,7 +6,8 @@
         "buildCommand": "echo building!"
     },
     "deploy": {
-        "startCommand": "./out",
+        "preDeployCommand": "echo starting!",
+        "startCommand": ["./out"],
         "healthcheckPath": "/health",
         "healthcheckTimeout": 100,
         "restartPolicyType": "never"
