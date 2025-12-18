@@ -8,7 +8,6 @@
     "deploy": {
         "preDeployCommand": ["echo '>>> RUNNING APP'"],
         "startCommand": "./out",
-        "healthcheckPath": "/health",
         "healthcheckTimeout": 100,
         "restartPolicyType": "ON_FAILURE"
     }
