@@ -57,8 +57,9 @@ COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/assets ./assets
 
 # Expose port
-ARG PORT
+ARG APP_PORT
 EXPOSE ${PORT}
 
 # Command to run
-CMD ["./main"]
+RUN chmod +x ./out
+CMD ["/bin/sh", "-c", "echo '>>> Container started! Mencoba menjalankan aplikasi...' && ./out"]
