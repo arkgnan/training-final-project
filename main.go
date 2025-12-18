@@ -37,9 +37,13 @@ func main() {
 
 	// Setup and run the router
 	r := router.SetupRouter()
-	port := os.Getenv("APP_PORT")
+	// Use PLATFORM PORT first (Railway sets PORT), then APP_PORT, then default 8080
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // default port if not set
+		port = os.Getenv("APP_PORT")
+		if port == "" {
+			port = "8080"
+		}
 	}
 	host := os.Getenv("APP_URL")
 	host = strings.TrimPrefix(host, "http://")
