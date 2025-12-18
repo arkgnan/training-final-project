@@ -13,6 +13,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
+//go:embed .env
 var embeddedFiles embed.FS
 var isReleaseBuild = "no"
 
@@ -50,7 +51,7 @@ func main() {
 		loadEmbeddedConfig()
 	}
 	// Inisialisasi Redis
-	// database.StartRedis()
+	database.StartRedis()
 	// Initialize DB connection and run migrations
 	database.StartDB()
 	helpers.RegisterCustomValidator()
