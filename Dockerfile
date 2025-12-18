@@ -14,7 +14,7 @@ RUN go install github.com/swaggo/swag/cmd/swag@latest
 RUN swag init
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s -X 'main.isReleaseBuild=yes'" -a -installsuffix cgo -o out .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s -X 'main.isReleaseBuild=yes'" -a -installsuffix cgo -o out
 
 # Production stage
 FROM alpine:latest
@@ -26,7 +26,7 @@ WORKDIR /app
 ENV TZ=Asia/Jakarta
 RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY --from=builder /app/main .
+COPY --from=builder /app/out .
 COPY --from=builder /app/docs ./docs
 COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/assets ./assets
