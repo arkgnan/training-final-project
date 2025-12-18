@@ -34,8 +34,8 @@ func SetupRouter() *gin.Engine {
 
 	// --- Public Endpoints (No Auth Required) ---
 	userController := controllers.NewUserController(database.GetDB(), appLogger)
-	r.POST("/users/register", userController.Register) // POST /users/register
-	r.POST("/users/login", userController.Login)       // POST /users/login
+	r.POST("/auth/register", userController.Register) // POST /users/register
+	r.POST("/auth/login", userController.Login)       // POST /users/login
 
 	// --- Authenticated Endpoints (Auth Required) ---
 	authRouter := r.Group("/")

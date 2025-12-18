@@ -20,8 +20,8 @@ type Claims struct {
 	jwt.RegisteredClaims
 }
 
-// CreateToken generates a new JWT token for a given user ID and email.
-func CreateToken(userID uuid.UUID, email string) (string, error) {
+// CreateTokenFunc is an overridable function (default implementation below) so tests can mock it.
+var CreateTokenFunc = func(userID uuid.UUID, email string) (string, error) {
 	// Set the expiration time for the token (e.g., 24 hours from now)
 	expirationTime := time.Now().Add(24 * time.Hour)
 
@@ -43,6 +43,11 @@ func CreateToken(userID uuid.UUID, email string) (string, error) {
 		return "", err
 	}
 	return tokenString, nil
+}
+
+// CreateToken calls the overridable GenerateTokenFunc.
+func CreateToken(userID uuid.UUID, email string) (string, error) {
+	return CreateTokenFunc(userID, email)
 }
 
 // VerifyToken verifies the JWT token string and returns the claims (payload).

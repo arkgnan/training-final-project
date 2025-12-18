@@ -41,6 +41,7 @@ func StartDB() {
 	MigrateTables(db)
 }
 
-func GetDB() *gorm.DB {
+// GetDB exposed as a variable so tests can override it (e.g. return an in-memory DB)
+var GetDB = func() *gorm.DB {
 	return db
 }
