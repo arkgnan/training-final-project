@@ -28,7 +28,7 @@ ARG APP_ENV
 # Logika: Jika APP_ENV=production, tambahkan flag -tags=embed
 RUN BUILD_TAGS=""; \
     if [ "$APP_ENV" = "production" ]; then BUILD_TAGS="-tags=embed"; fi; \
-    CGO_ENABLED=0 GOOS=linux go build ${BUILD_TAGS} -ldflags="-s -w -X 'main.isReleaseBuild=yes' -X 'main.CommitHash=${RAILWAY_GIT_COMMIT_SHA}'" -a -installsuffix cgo -o main .
+    CGO_ENABLED=0 GOOS=linux go build ${BUILD_TAGS} -ldflags="-s -w -X 'main.isReleaseBuild=yes' -X 'main.CommitHash=${RAILWAY_GIT_COMMIT_SHA}'" -a -installsuffix cgo -o out
 
 
 # Production stage
