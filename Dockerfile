@@ -21,6 +21,8 @@ RUN go install github.com/swaggo/swag/cmd/swag@latest
 RUN swag init
 
 # Build the application
+# add -tags=embed to embed env.
+# example : go build -tags=embed -ldflags="-X main.isReleaseBuild=yes" -o mygram-api
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-X 'main.isReleaseBuild=yes'" -a -installsuffix cgo -o main .
 
 # Production stage
