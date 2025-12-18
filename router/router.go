@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	_ "mygram-api/docs" // Import generated swagger docs
+	// _ "mygram-api/docs" // Import generated swagger docs
 
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
