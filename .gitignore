@@ -1,0 +1,12 @@
+.env
+docs/
+logs/
+tmp/
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.log
+mygram-api
