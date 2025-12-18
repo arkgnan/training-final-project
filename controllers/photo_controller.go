@@ -35,7 +35,7 @@ func NewPhotoController(db *gorm.DB, appLogger *log.Logger) *PhotoController {
 // @Tags photos
 // @Accept json
 // @Produce json
-// @Param photo body dto.PhotoCreateRequest true "Photo create payload"
+// @Param photo body dto.PhotoUpsertRequest true "Photo create payload"
 // @Success 201 {object} dto.BaseResponseSuccessWithData
 // @Failure 400 {object} dto.BaseResponseError
 // @Failure 500 {object} dto.BaseResponseError
@@ -138,7 +138,7 @@ func (p *PhotoController) GetAll(c *gin.Context) {
 // @Tags photos
 // @Accept json
 // @Produce json
-// @Param photo body dto.PhotoUpdateRequest true "Photo update payload"
+// @Param photo body dto.PhotoUpsertRequest true "Photo update payload"
 // @Param photoID path string true "Photo ID"
 // @Success 200 {object} dto.BaseResponseSuccessWithData
 // @Failure 400 {object} dto.BaseResponseError

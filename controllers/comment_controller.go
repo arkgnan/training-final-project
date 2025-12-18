@@ -147,7 +147,7 @@ func (cc *CommentController) GetAll(c *gin.Context) {
 // @Tags comments
 // @Accept json
 // @Produce json
-// @Param comment body dto.CommentUpdateRequest true "Comment update payload"
+// @Param comment body dto.CommentReplyRequest true "Comment update payload"
 // @Param commentID path string true "Comment ID"
 // @Success 200 {object} dto.BaseResponseSuccessWithData
 // @Failure 400 {object} dto.BaseResponseError
