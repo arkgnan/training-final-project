@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -15,6 +16,8 @@ var (
 )
 
 func StartDB() {
+	_ = godotenv.Load()
+
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USERNAME")
 	password := os.Getenv("DB_PASSWORD")
