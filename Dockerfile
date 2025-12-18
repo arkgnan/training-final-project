@@ -21,13 +21,13 @@ RUN go install github.com/swaggo/swag/cmd/swag@latest
 RUN swag init
 
 ARG RAILWAY_GIT_COMMIT_SHA
-ARG APP_ENV
+ARG DEPLOY_MODE
 
 # Build the application
 # flags '-w -s' untuk memperkecil ukuran binary
 # Logika: Jika APP_ENV=production, tambahkan flag -tags=embed
 RUN BUILD_TAGS=""; \
-    if [ "$APP_ENV" = "production" ]; then BUILD_TAGS="-tags=embed"; fi; \
+    if [ "$DEPLOY_MODE" = "embed" ]; then BUILD_TAGS="-tags=embed"; fi; \
     CGO_ENABLED=0 GOOS=linux go build ${BUILD_TAGS} -ldflags="-s -w -X 'main.isReleaseBuild=yes' -X 'main.CommitHash=${RAILWAY_GIT_COMMIT_SHA}'" -a -installsuffix cgo -o out
 
 
