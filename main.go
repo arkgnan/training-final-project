@@ -49,7 +49,7 @@ func main() {
 	host = strings.TrimPrefix(host, "http://")
 	host = strings.TrimPrefix(host, "https://")
 	if host == "" {
-		host = "127.0.0.1" // fallback to localhost
+		host = "0.0.0.0" // fallback to localhost
 	}
 	addr := host + ":" + port
 	fmt.Printf("Listening %s\n", addr)
