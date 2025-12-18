@@ -56,10 +56,11 @@ COPY --from=builder /app/templates ./templates
 # Copy static assets (untuk email templates dan static files lainnya)
 COPY --from=builder /app/assets ./assets
 
+RUN echo ">>> Cek file hasil copy:" && ls -la /app
+
 # Expose port
 ARG APP_PORT
 EXPOSE ${PORT}
 
 # Command to run
-RUN chmod +x ./out
-CMD ["/bin/sh", "-c", "echo '>>> Container started! Mencoba menjalankan aplikasi...' && ./out"]
+CMD ["./out"]
